@@ -1,2 +1,3 @@
-KatalinaMustatea_ReservesterF13
+HonorCode_ReservesterF13
 ===============================
+This is my SINY homework.
