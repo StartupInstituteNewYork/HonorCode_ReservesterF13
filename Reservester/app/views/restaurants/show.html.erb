@@ -8,6 +8,8 @@
   <%= @restaurant.description %>
 </p>
 
+<%= image_tag restaurant.image_url(:thumb) if @restaurant.image? %>
+
 <p>
   <strong>Address:</strong>
   <%= @restaurant.address1 %>
