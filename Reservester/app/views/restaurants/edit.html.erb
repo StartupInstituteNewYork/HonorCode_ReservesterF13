@@ -49,14 +49,24 @@
     <%= f.text_field :zip %>
   </p>
 
-   <p>
+  <p>
     <%= f.label :phone %><br>
     <%= f.text_field :phone %>
+  </p>
+
+  <p>
+    <%= f.file_field :image %>
+  </p>
+
+   <p>
+    <%= f.label :remote_image_url, "or image URL" %><br />
+    <%= f.text_field :remote_image_url %>
   </p>
  
   <p>
     <%= f.submit %>
   </p>
+  
 <% end %>
 
 <%= link_to 'Back', restaurants_path %>
