@@ -1,0 +1,4 @@
+== README
+
+This is my version of the Reservester app. 
+It lives on Heroku here: http://myreservester.herokuapp.com/

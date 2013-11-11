@@ -1,0 +1,38 @@
+<h1>List of Restaurants</h1>
+
+ 
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Address 1</th>
+    <th>Address 2</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Zip</th>
+    <th>Phone</th>
+  </tr>
+ 
+  <% @restaurants.each do |restaurant| %>
+    <tr>
+      <td><%= restaurant.name %></td>
+      <td><%= restaurant.description %></td>
+      <td><%= restaurant.address1 %></td>
+      <td><%= restaurant.address2 %></td>
+      <td><%= restaurant.city %></td>
+      <td><%= restaurant.state %></td>
+      <td><%= restaurant.zip %></td>
+      <td><%= restaurant.phone %></td>
+
+      
+
+      <td><<%= link_to 'Show', restaurant_path(restaurant) %></td>
+      <td><<%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+      <td><<%= link_to 'Destroy', restaurant_path(restaurant),
+      method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= image_tag restaurant.image_url(:thumb).to_s %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'New Restaurant', new_restaurant_path %>

@@ -1,0 +1,32 @@
+<p>
+  <strong>Name:</strong>
+  <%= @restaurant.name %>
+</p>
+ 
+<p>
+  <strong>Description:</strong>
+  <%= @restaurant.description %>
+</p>
+
+<div>
+  <%= image_tag @restaurant.image_url(:thumb).to_s %>
+</div>
+
+<p>
+  <strong>Address:</strong>
+  <%= @restaurant.address1 %>
+  <%= @restaurant.address2 %>
+  <%= @restaurant.city %>
+  <%= @restaurant.state %>
+  <%= @restaurant.zip %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @restaurant.phone %>
+</p>
+
+<%= link_to 'Back', restaurants_path %>
+<%= link_to 'Edit', edit_restaurant_path %>
+<%= link_to 'Destroy', restaurant_path,
+      method: :delete, data: { confirm: 'Are you sure?' } %>
