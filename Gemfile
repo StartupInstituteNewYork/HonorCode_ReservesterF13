@@ -9,6 +9,7 @@ gem 'bootstrap-sass', '2.3.2.0'
 
 gem 'rmagick'
 gem 'carrierwave'
+gem "fog", "~> 1.3.1"
 gem 'dotenv-rails', :groups => [:development, :test]
 
 group :development, :test do
