@@ -9,7 +9,7 @@
 </p>
 
 <div>
-  <%= image_tag @restaurant.image_url(:thumb).to_s %>
+  <%= image_tag @restaurant.image_url(:thumb).to_s if @restaurant.image? %>
 </div>
 
 <p>
