@@ -7,9 +7,9 @@
 	    <ul class="nav pull-right">
 	      <li>
 	          <% if owner_signed_in? %>
-	          <%= link_to "Sign Out", destroy_owner_session_path, method: :delete, class: "float-right" %>
+	            <%= link_to "Sign Out", destroy_owner_session_path, method: :delete, class: "float-right" %>
 	          <% else %>
-	          <%= link_to "Sign In", new_owner_session_path, class: "float-right" %>
+	            <%= link_to "Sign In", new_owner_session_path, class: "float-right" %>
 	          <% end %>
 	      </li>
 	    </ul>
