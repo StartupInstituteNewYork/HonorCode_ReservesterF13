@@ -11,6 +11,7 @@ gem 'rmagick'
 gem 'carrierwave'
 gem "fog", "~> 1.3.1"
 gem 'dotenv-rails', :groups => [:development, :test]
+gem 'devise'
 
 group :assets do
   gem 'twitter-bootstrap-rails'
