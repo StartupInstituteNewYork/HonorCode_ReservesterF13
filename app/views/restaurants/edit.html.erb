@@ -1,5 +1,10 @@
-<h1>Editing restaurant</h1>
+<% provide(:title, 'Edit') %>
 
+<div class="center hero-unit">
+  <h1>Editing restaurant</h1>
+</div>
+
+<div>
 <%= form_for :restaurant, url: restaurant_path(@restaurant.id), method: :patch do |f| %>
 
 <% if @restaurant.errors.any? %>
@@ -77,5 +82,5 @@
   </p>
   
 <% end %>
-
+</div>
 <%= link_to 'Back', restaurants_path %>

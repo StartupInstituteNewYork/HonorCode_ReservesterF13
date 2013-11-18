@@ -12,6 +12,10 @@ gem 'carrierwave'
 gem "fog", "~> 1.3.1"
 gem 'dotenv-rails', :groups => [:development, :test]
 
+group :assets do
+  gem 'twitter-bootstrap-rails'
+end
+
 group :development, :test do
   gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.13.1'

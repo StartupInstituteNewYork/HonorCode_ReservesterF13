@@ -1,3 +1,9 @@
+<% provide(:title, 'Show') %>
+<div class="center hero-unit">
+  <h1>New Restaurant</h1>
+</div>
+
+<div>
 <p>
   <strong>Name:</strong>
   <%= @restaurant.name %>
@@ -30,3 +36,4 @@
 <%= link_to 'Edit', edit_restaurant_path %>
 <%= link_to 'Destroy', restaurant_path,
       method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>

@@ -1,6 +1,10 @@
-<h1>List of Restaurants</h1>
+<% provide(:title, 'List') %>
+<div class="center hero-unit">
+  <h1>List of Restaurants</h1>
+</div>
 
- 
+<div>
+<h2> 
 <table>
   <tr>
     <th>Name</th>
@@ -34,5 +38,6 @@
     </tr>
   <% end %>
 </table>
-
+</h2>
+</div>
 <%= link_to 'New Restaurant', new_restaurant_path %>
