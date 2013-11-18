@@ -1,4 +1,6 @@
 Reservester::Application.routes.draw do
+  devise_for :users
+  get "users/new"
   devise_for :owners
   get "welcome/index"
   get "owners/new"
