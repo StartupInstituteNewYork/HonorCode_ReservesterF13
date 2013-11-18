@@ -4,11 +4,15 @@
 	  <%= link_to image_tag("Rbig.png", alt: "R")+"eservester",'#', id: "logo" %>
 
        <nav>
-         <ul class="nav pull-right">
-          <li><%= link_to "Home",    '#' %></li>
-          <li><%= link_to "Help",    '#' %></li>
-          <li><%= link_to "Sign in", '#' %></li>
-        </ul>
+	    <ul class="nav pull-right">
+	      <li>
+	          <% if owner_signed_in? %>
+	          <%= link_to "Sign Out", destroy_owner_session_path, method: :delete, class: "float-right" %>
+	          <% else %>
+	          <%= link_to "Sign In", new_owner_session_path, class: "float-right" %>
+	          <% end %>
+	      </li>
+	    </ul>
       </nav>
 
     </div>

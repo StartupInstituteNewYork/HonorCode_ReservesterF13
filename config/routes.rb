@@ -1,10 +1,11 @@
 Reservester::Application.routes.draw do
+  devise_for :owners
   get "users/new"
   get "welcome/index"
 
   resources :restaurants
   root to: "restaurants#index"
-  match '/signup',  to: 'users#new',            via: 'get'
+  match '/signup',  to: 'owners#new',            via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
