@@ -2,6 +2,7 @@ class DeviseCreateOwners < ActiveRecord::Migration
   def change
     create_table(:owners) do |t|
       ## Database authenticatable
+      t.string :name
       t.string :email,              :null => false, :default => ""
       t.string :encrypted_password, :null => false, :default => ""
 
