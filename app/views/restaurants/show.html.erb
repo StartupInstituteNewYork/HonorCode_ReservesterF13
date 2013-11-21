@@ -31,9 +31,10 @@
   <strong>Phone:</strong>
   <%= @restaurant.phone %>
 </p>
-
 <%= link_to 'Back', restaurants_path %>
-<%= link_to 'Edit', edit_restaurant_path %>
+<% if @restaurant.owner==current_owner%>
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %>
 <%= link_to 'Destroy', restaurant_path,
       method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
 </div>
