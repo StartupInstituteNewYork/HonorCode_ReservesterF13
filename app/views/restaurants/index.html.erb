@@ -1,46 +1,57 @@
-<% provide(:title, 'List') %>
+<%- model_class = Restaurant -%>
 
-<div class="center hero-unit">
-  <h1>List of Restaurants</h1>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
-
-<div>
-<h2> 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Address 1</th>
-    <th>Address 2</th>
-    <th>City</th>
-    <th>State</th>
-    <th>Zip</th>
-    <th>Phone</th>
-  </tr>
- 
-  <% @restaurants.each do |restaurant| %>
+<table class="table table-striped">
+  <thead>
     <tr>
-      <td><%= restaurant.name %></td>
-      <td><%= restaurant.description %></td>
-      <td><%= restaurant.address1 %></td>
-      <td><%= restaurant.address2 %></td>
-      <td><%= restaurant.city %></td>
-      <td><%= restaurant.state %></td>
-      <td><%= restaurant.zip %></td>
-      <td><%= restaurant.phone %></td>
 
-      
-
-      <td><%= link_to 'Show', restaurant_path(restaurant) %></td>
-
-      <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
-      <td><%= link_to 'Destroy', restaurant_path(restaurant),
-      method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <td><%= image_tag restaurant.image_url(:thumb).to_s %></td>
-
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:address1) %></th>
+      <th><%= model_class.human_attribute_name(:address2) %></th>
+      <th><%= model_class.human_attribute_name(:city) %></th>
+      <th><%= model_class.human_attribute_name(:state) %></th>
+      <th><%= model_class.human_attribute_name(:zip) %></th>
+      <th><%= model_class.human_attribute_name(:phone) %></th>
+      <th><%= model_class.human_attribute_name(:image) %></th>
+      <th><%= model_class.human_attribute_name(:menu) %></th>
+      <th><%= model_class.human_attribute_name(:owner_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <% @restaurants.each do |restaurant| %>
+      <tr>
+        <td><%= link_to restaurant.name, restaurant_path(restaurant) %></td>
+
+        <td><%= restaurant.description %></td>
+        <td><%= restaurant.address1 %></td>
+        <td><%= restaurant.address2 %></td>
+        <td><%= restaurant.city %></td>
+        <td><%= restaurant.state %></td>
+        <td><%= restaurant.zip %></td>
+        <td><%= restaurant.phone %></td>
+        <td><%= image_tag restaurant.image_url(:thumb).to_s %></td>
+        <td><%= restaurant.menu %></td>
+        <td><%= restaurant.owner_id %></td>
+        <td><%=l restaurant.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_restaurant_path(restaurant), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      restaurant_path(restaurant),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
-</h2>
-</div>
-<%= link_to 'New Restaurant', new_restaurant_path %>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_restaurant_path,
+            :class => 'btn btn-primary' %>

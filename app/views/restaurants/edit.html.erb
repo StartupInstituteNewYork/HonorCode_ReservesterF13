@@ -1,11 +1,5 @@
-<% provide(:title, 'Edit') %>
-
-<div class="center hero-unit">
-  <h1>Editing restaurant</h1>
+<%- model_class = Restaurant -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
 </div>
-
-<div>
-  <%= render "form" %>
-</div>
-
-<%= link_to 'Back', restaurants_path %>
+<%= render :partial => 'form' %>
