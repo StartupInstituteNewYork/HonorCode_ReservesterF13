@@ -1,4 +1,3 @@
 == README
 
-This is my version of the Reservester app. 
-It lives on Heroku here: http://myreservester.herokuapp.com
+This is my project for SINY (Oct - December 2013). It started out as a restaurant reservation app but has since morphed into something new. It lives on Heroku here: http://myreservester.herokuapp.com
