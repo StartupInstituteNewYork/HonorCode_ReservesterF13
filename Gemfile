@@ -14,9 +14,11 @@ gem 'dotenv-rails', :groups => [:development, :test]
 gem 'devise'
 gem 'protected_attributes'
 
-group :assets do
+
   gem 'twitter-bootstrap-rails'
-end
+  gem 'less-rails'
+  gem 'therubyracer'
+
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
