@@ -21,7 +21,7 @@
   <dt><strong><%= model_class.human_attribute_name(:phone) %>:</strong></dt>
   <dd><%= @restaurant.phone %></dd>
   <dt><strong><%= model_class.human_attribute_name(:image) %>:</strong></dt>
-  <dd><%= @restaurant.image %></dd>
+  <dd><%= image_tag @restaurant.image_url(:thumb).to_s %></dd>
   <dt><strong><%= model_class.human_attribute_name(:menu) %>:</strong></dt>
   <dd><%= @restaurant.menu %></dd>
   <dt><strong><%= model_class.human_attribute_name(:owner_id) %>:</strong></dt>
