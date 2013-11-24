@@ -6,7 +6,7 @@ class Owner < ActiveRecord::Base
          
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name
   
-  validates :name, presence: true
+#  validates :name, :email, presence: true
   
-  has_many :restaurants
+  has_many :restaurants, dependent: :destroy
 end

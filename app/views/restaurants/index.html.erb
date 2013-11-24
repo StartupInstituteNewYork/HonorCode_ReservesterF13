@@ -15,10 +15,9 @@
       <th><%= model_class.human_attribute_name(:state) %></th>
       <th><%= model_class.human_attribute_name(:zip) %></th>
       <th><%= model_class.human_attribute_name(:phone) %></th>
-      <th><%= model_class.human_attribute_name(:image) %></th>
+      <th><%= model_class.human_attribute_name(:image) %></th></br>
       <th><%= model_class.human_attribute_name(:menu) %></th>
       <th><%= model_class.human_attribute_name(:owner_id) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -37,7 +36,6 @@
         <td><%= image_tag restaurant.image_url(:thumb).to_s %></td>
         <td><%= restaurant.menu %></td>
         <td><%= restaurant.owner_id %></td>
-        <td><%=l restaurant.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_restaurant_path(restaurant), :class => 'btn btn-mini' %>

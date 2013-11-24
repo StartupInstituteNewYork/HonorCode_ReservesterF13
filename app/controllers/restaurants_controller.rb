@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
   
-  before_filter :authenticate_owner!, only: [:new, :create]
+  before_filter :authenticate_owner!, only: [:new, :create, :edit, :update, :destroy]
   before_filter :confirm_ownership, only: [:edit, :update, :destroy]
 	
 	def new
@@ -11,9 +11,9 @@ class RestaurantsController < ApplicationController
 		@restaurant = current_owner.restaurants.build(restaurant_params)
 
 		if @restaurant.save
-			redirect_to @restaurant, notice: "Restaurant was successfully created"
+			redirect_to @restaurant, notice: "#{@restaurant.name} was successfully created!"
 		else
-			render 'new'
+			render :new
 		end
 	end
 
@@ -33,9 +33,9 @@ class RestaurantsController < ApplicationController
 		@restaurant = Restaurant.find(params[:id])
 
     if @restaurant.update_attributes(params[:restaurant])
-     redirect_to @restaurant, notice: 'Restaurant was successfully updated.'
+     redirect_to @restaurant, notice: "#{@restaurant.name} was successfully updated."
 		else
-			render 'edit'		
+			render :edit		
 		end
 	end
 
@@ -43,7 +43,7 @@ class RestaurantsController < ApplicationController
 		@restaurant = Restaurant.find(params[:id])
 		@restaurant.destroy
 
-		redirect_to restaurants_path
+		redirect_to restaurants_path, alert: "#{@restaurant.name} was successfully deleted!"
 	end
 
 	private
@@ -51,10 +51,15 @@ class RestaurantsController < ApplicationController
 	def restaurant_params
 		params.require(:restaurant).permit(:name, :description, :address1, :address2, :city, :state, :zip, :phone, :image, :menu, :owner_id)
 	end		
+
+
+  def confirm_ownership
+   @restaurant = Restaurant.find(params[:id])
+   if @restaurant.owner != current_owner
+     redirect_to @restaurant, notice: "You don't own #{@restaurant.name}!"
+   end
+  end
+
 end
 
-def confirm_ownership
- restaurant = Restaurant.find(params[:id])
- restaurant.owner != current_owner
-end
 
