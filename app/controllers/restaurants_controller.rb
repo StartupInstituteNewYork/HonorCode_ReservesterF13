@@ -5,10 +5,12 @@ class RestaurantsController < ApplicationController
 	
 	def new
 	  @restaurant=Restaurant.new
+    @owner=current_owner
 	end
 
 	def create
 		@restaurant = current_owner.restaurants.build(restaurant_params)
+		@owner=current_owner
 
 		if @restaurant.save
 			redirect_to @restaurant, notice: "#{@restaurant.name} was successfully created!"
@@ -19,10 +21,12 @@ class RestaurantsController < ApplicationController
 
 	def show
 		@restaurant = Restaurant.find(params[:id])
+		@owner=current_owner
 	end
 
 	def index
 		@restaurants = Restaurant.all
+	
 	end
 
 	def edit
@@ -31,6 +35,7 @@ class RestaurantsController < ApplicationController
 
 	def update
 		@restaurant = Restaurant.find(params[:id])
+		@owner=current_owner
 
     if @restaurant.update_attributes(params[:restaurant])
      redirect_to @restaurant, notice: "#{@restaurant.name} was successfully updated."
@@ -40,6 +45,7 @@ class RestaurantsController < ApplicationController
 	end
 
 	def destroy
+	  @owner=current_owner
 		@restaurant = Restaurant.find(params[:id])
 		@restaurant.destroy
 
@@ -59,6 +65,7 @@ class RestaurantsController < ApplicationController
      redirect_to @restaurant, notice: "You don't own #{@restaurant.name}!"
    end
   end
+  
 
 end
 

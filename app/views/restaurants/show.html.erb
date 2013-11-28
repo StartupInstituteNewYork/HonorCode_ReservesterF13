@@ -24,14 +24,20 @@
 
   <dt><strong><%= model_class.human_attribute_name(:menu) %>:</strong></dt>
   <dd><%= @restaurant.menu %></dd></br>
-  <dt><strong><%= model_class.human_attribute_name(:owner_id) %>:</strong></dt>
-  <dd><%= @restaurant.owner_id %></dd></br>
+  <dt><strong><%= model_class.human_attribute_name(:owner) %>:</strong></dt>
+  
+  <% if owner_signed_in? %>
+    <dd><%= @owner.name %></dd></br>
+  <% else %>
+    <dd><%= @restaurant.owner_id %></dd></br>
+  <% end %>
 </dl>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               restaurants_path, :class => 'btn'  %>
 
+  <% if owner_signed_in? %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_restaurant_path(@restaurant), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
@@ -39,5 +45,6 @@
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
+  <% end %>
 
 </div>
