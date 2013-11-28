@@ -22,22 +22,24 @@
   <dt><strong><%= model_class.human_attribute_name(:phone) %>:</strong></dt>
   <dd><%= @restaurant.phone %></dd></br>
 
+  <% if false %>
   <dt><strong><%= model_class.human_attribute_name(:menu) %>:</strong></dt>
   <dd><%= @restaurant.menu %></dd></br>
-  <dt><strong><%= model_class.human_attribute_name(:owner) %>:</strong></dt>
-  
-  <% if owner_signed_in? %>
-    <dd><%= @owner.name %></dd></br>
-  <% else %>
-    <dd><%= @restaurant.owner_id %></dd></br>
   <% end %>
+
+  <dt><strong><%= model_class.human_attribute_name(:owner) %>:</strong></dt> 
+  <% if @restaurant.owner %>
+  <dd><%= @restaurant.owner.name %></dd></br>
+  <% end %>
+
+
 </dl>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               restaurants_path, :class => 'btn'  %>
 
-  <% if owner_signed_in? %>
+  <% if owner_signed_in? && @restaurant.owner == current_owner %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_restaurant_path(@restaurant), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
