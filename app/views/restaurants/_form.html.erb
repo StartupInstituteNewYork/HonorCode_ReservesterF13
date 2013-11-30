@@ -1,4 +1,4 @@
-<%= form_for @restaurant, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @restaurant, :html => { :class => 'form-horizontal' }, data: {validate: 'parsley'}, novalidate: 'novalidate' do |f| %>
 
 <% if @restaurant.errors.any? %>
   <div id="errorExplanation">
@@ -13,85 +13,93 @@
   </div>
 <% end %>
 
+<fieldset>
   <div class="control-group">
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :name, :class => 'text_field' %>
+      <%= f.text_field :name, :class => 'text_field', placeholder: 'Name', :"data-required" => "true", :"data-notblank" => "true", autofocus: true %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :description, :class => 'text_field' %>
+      <%= f.text_field :description, :class => 'text_field', placeholder: 'Description' %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :address1, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :address1, :class => 'text_field' %>
+      <%= f.text_field :address1, :class => 'text_field', placeholder: 'Number and Street' %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :address2, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :address2, :class => 'text_field' %>
+      <%= f.text_field :address2, :class => 'text_field', placeholder: 'Apartment Number' %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :city, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :city, :class => 'text_field' %>
+      <%= f.text_field :city, :class => 'text_field', placeholder: 'City' %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :state, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :state, :class => 'text_field' %>
+      <%= f.text_field :state, :class => 'text_field', placeholder: 'State' %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :zip, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :zip, :class => 'text_field' %>
+      <%= f.text_field :zip, :class => 'text_field', placeholder: 'Zip', :"data-type" => "digits" %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :phone, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :phone, :class => 'text_field' %>
+      <%= f.text_field :phone, :class => 'text_field', placeholder: 'Phone', :"data-required" => "true", :"data-notblank" => "true", :"data-type" => "phone" %>
     </div>
   </div>
 
   <div class="control-group">
 	<%= f.label :image, :class => 'control-label' %>
+	
     
     <div class="controls">
+
 	  <%= f.file_field :image %></br>
     </div>
    
     <div class="controls">
 	 <%= f.label :remote_image_url, "or image URL" %>
-     <%= f.text_field :remote_image_url, :class => 'text_field' %>
+	
+     <%= f.text_field :remote_image_url, :class => 'text_field', placeholder: 'Image URL' %>
+     <%= f.hidden_field :image_cache %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label :menu, :class => 'control-label' %>
+
     <div class="controls">
-      <%= f.text_field :menu, :class => 'text_field' %>
+	  <%= f.file_field :menu %></br>
+    </div>
+
+    <div class="controls">
+	  <%= f.label :remote_menu_url, "or image URL" %>
+      <%= f.text_field :remote_menu_url, :class => 'text_field', placeholder: 'Menu URL' %>
+      <%= f.hidden_field :menu_cache %>
     </div>
   </div>
 
-  <div class="control-group">
-    <%= f.label :owner_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :owner_id, :class => 'text_field' %>
-    </div>
-  </div>
+
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 restaurants_path, :class => 'btn' %>
   </div>
+</fieldset>
 <% end %>
