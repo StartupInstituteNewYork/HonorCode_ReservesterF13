@@ -13,6 +13,7 @@ gem "fog", "~> 1.3.1"
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'devise'
 gem 'protected_attributes'
+gem 'parsley-rails'
 
 
   gem 'twitter-bootstrap-rails'
