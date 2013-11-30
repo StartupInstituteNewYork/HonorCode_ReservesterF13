@@ -101,6 +101,7 @@ GEM
     net-ssh (2.7.0)
     nokogiri (1.5.10)
     orm_adapter (0.5.0)
+    parsley-rails (1.2.1.0)
     pg (0.15.1)
     polyglot (0.3.3)
     protected_attributes (1.0.5)
@@ -208,6 +209,7 @@ DEPENDENCIES
   jbuilder (= 1.0.2)
   jquery-rails (= 3.0.4)
   less-rails
+  parsley-rails
   pg (= 0.15.1)
   protected_attributes
   rails (= 4.0.1)
