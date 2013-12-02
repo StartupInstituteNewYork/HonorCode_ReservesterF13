@@ -1,9 +1,13 @@
 Reservester::Application.routes.draw do
+  get "reservations/create"
+  get "reservations/destroy"
   devise_for :owners
   get "users/new"
   get "welcome/index"
 
-  resources :restaurants
+  resources :restaurants do
+    resources :reservations
+  end 
   root to: "restaurants#index"
   match '/signup',  to: 'owners#new',            via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.

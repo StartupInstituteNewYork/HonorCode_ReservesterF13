@@ -37,7 +37,7 @@
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
-              restaurants_path, :class => 'btn'  %>
+              restaurants_path, :class => 'btn'  %><br>
 
   <% if owner_signed_in? && @restaurant.owner == current_owner %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -47,8 +47,12 @@
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
+  <% else %>
+
+        <h5>Make a reservation!</h5>
+        <%= render 'reservation_form' %>
+
   <% end %>
 
-
-
 </div>
+
