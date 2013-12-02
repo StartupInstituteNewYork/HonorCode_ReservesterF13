@@ -13,4 +13,5 @@ class Restaurant < ActiveRecord::Base
   mount_uploader :menu, MenuUploader
   
   belongs_to :owner 
+  has_many :reservations
 end
