@@ -3,56 +3,60 @@
   <h1><%=t '.title', :default => model_class.human_attribute_name(@restaurant.name).titleize %></h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dd><%= @restaurant.description %></dd></br>
+<div class="container-fluid">	
+	<div class="row">
+	  <p><h4><%= @restaurant.description %></h4></p></br>
 
 
-  <dd><%= image_tag @restaurant.image_url(:masthead).to_s %></dd></br>
+	  <dd><%= image_tag @restaurant.image_url(:masthead).to_s %></dd></br>
 
-  <dt><strong><%= model_class.human_attribute_name(:address1) %>:</strong></dt>
-  <dd><%= @restaurant.address1 %></dd></br>
-  <dt><strong><%= model_class.human_attribute_name(:address2) %>:</strong></dt>
-  <dd><%= @restaurant.address2 %></dd></br>
-  <dt><strong><%= model_class.human_attribute_name(:city) %>:</strong></dt>
-  <dd><%= @restaurant.city %></dd></br>
-  <dt><strong><%= model_class.human_attribute_name(:state) %>:</strong></dt>
-  <dd><%= @restaurant.state %></dd></br>
-  <dt><strong><%= model_class.human_attribute_name(:zip) %>:</strong></dt>
-  <dd><%= @restaurant.zip %></dd></br>
-  <dt><strong><%= model_class.human_attribute_name(:phone) %>:</strong></dt>
-  <dd><%= @restaurant.phone %></dd></br>
+	  <dt><strong><%= model_class.human_attribute_name(:address1) %>:</strong></dt>
+	  <dd><%= @restaurant.address1 %></dd></br>
+	  <dt><strong><%= model_class.human_attribute_name(:address2) %>:</strong></dt>
+	  <dd><%= @restaurant.address2 %></dd></br>
+	  <dt><strong><%= model_class.human_attribute_name(:city) %>:</strong></dt>
+	  <dd><%= @restaurant.city %></dd></br>
+	  <dt><strong><%= model_class.human_attribute_name(:state) %>:</strong></dt>
+	  <dd><%= @restaurant.state %></dd></br>
+	  <dt><strong><%= model_class.human_attribute_name(:zip) %>:</strong></dt>
+	  <dd><%= @restaurant.zip %></dd></br>
+	  
+	  <strong><%= model_class.human_attribute_name(:phone) %>:</strong>
+	  <dd><%= @restaurant.phone %></dd></br>
 
-  <% if false %>
-  <dt><strong><%= model_class.human_attribute_name(:menu) %>:</strong></dt>
-  <dd><%= @restaurant.menu %></dd></br>
-  <% end %>
-
-  <dt><strong><%= model_class.human_attribute_name(:owner) %>:</strong></dt> 
-  <% if @restaurant.owner %>
-  <dd><%= @restaurant.owner.name %></dd></br>
-  <% end %>
+ 
+	  <% if @restaurant.owner %>
+	    <p><b>Proprietor:</b> <%= @restaurant.owner.name %></p></br>
+	  <% end %>
 
 
-</dl>
+    </div>
+</div>
+
 
 <div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              restaurants_path, :class => 'btn'  %><br>
+              <%= link_to t('.back', :default => t("helpers.links.back")), restaurants_path, :class => 'btn'  %>
 
-  <% if owner_signed_in? && @restaurant.owner == current_owner %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_restaurant_path(@restaurant), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              restaurant_path(@restaurant),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-  <% else %>
-
-        <h5>Make a reservation!</h5>
-        <%= render 'reservation_form' %>
-
-  <% end %>
+			  <% if owner_signed_in? && @restaurant.owner == current_owner %>
+			    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+			              edit_restaurant_path(@restaurant), :class => 'btn' %>
+			    <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+			              restaurant_path(@restaurant),
+			              :method => 'delete',
+			              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+			              :class => 'btn btn-danger' %>
+			 <% end %>
 
 </div>
+
+
+  <% if owner_signed_in? && @restaurant.owner == current_owner %>
+  <% else %>
+    <div class="form-actions">
+      <h5>Make a reservation!</h5>
+      <%= render 'reservation_form' %>
+    </div>
+  <% end %>
+
+
 
