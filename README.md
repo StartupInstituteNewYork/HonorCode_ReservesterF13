@@ -10,3 +10,5 @@ Gems and specs so far:
 * Bootstrap responsive design
 * Client-side validation with Parsely JS
 
+OK
+
