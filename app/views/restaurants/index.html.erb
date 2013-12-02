@@ -8,31 +8,33 @@
 
 
 <div class="container-fluid">
+	
+	<div class="row">
 
           <% @restaurants.each do |restaurant| %>
-		   
-		   <div class="restaurant-wrap">
-		   <div class="row">
+		   <div class="restaurant-wrap">	   
 			
-		   <div class="col-sm-6 col-md-2">
+		   <div class="col-lg-3 col-md-4 col-xs-6 thumb">
 		    <div class="thumbnail">
-			  <%= link_to (image_tag restaurant.image_url(:thumb).to_s), restaurant_path(restaurant) %>
-		      
-		      <div class="caption">
+		      <%= link_to (image_tag restaurant.image_url(:thumb).to_s), restaurant_path(restaurant) %>
+		    
+		    <div class="caption">
 			    <p><em><%= restaurant.description %></em></p>
 		        <h3><%= link_to restaurant.name, restaurant_path(restaurant) %></h3>
 		        
 			    <%= restaurant.address1 %> <%= restaurant.address2 %>
 		        <p><%= restaurant.city %>, <%= restaurant.state %> <%= restaurant.zip %></p>
 		        <p><b>Proprietor:</b> <%= restaurant.owner.name %></p>
-		      </div>
 		    </div>
+		    		    
+		 	 </div>
 		   </div>
 		
-           </div>
+
            </div>
           <% end %>
 
+  </div>
 </div>
 
 	    
