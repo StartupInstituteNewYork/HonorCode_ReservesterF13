@@ -76,7 +76,7 @@
 	 <%= f.label :remote_image_url, "or image URL" %>
 	
      <%= f.text_field :remote_image_url, :class => 'text_field', placeholder: 'Image URL' %>
-     <%= f.hidden_field :image_cache %>
+     <%= f.hidden_field :image_cache, :value => @restaurant.image_cache %>
     </div>
   </div>
 
@@ -90,7 +90,7 @@
     <div class="controls">
 	  <%= f.label :remote_menu_url, "or image URL" %>
       <%= f.text_field :remote_menu_url, :class => 'text_field', placeholder: 'Menu URL' %>
-      <%= f.hidden_field :menu_cache %>
+      <%= f.hidden_field :menu_cache, :value => @restaurant.menu_cache %>
     </div>
   </div>
 
