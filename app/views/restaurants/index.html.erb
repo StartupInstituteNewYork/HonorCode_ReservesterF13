@@ -1,7 +1,11 @@
 <%- model_class = Restaurant -%>
 
 <div class="page-header">
+  <% if false %>
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <% end %>
+  <h1><%=t '.title', :default => 'The restaurants you wish existed.' %></h1>
+  <h2><%=t '.title', :default => 'Choose a restaurant. Make your reservation. Nevermind reality.' %></h2>
 </div>
 
 
@@ -13,12 +17,12 @@
 
           <% @restaurants.each do |restaurant| %>
 		    <div class="restaurant-wrap">	   			
-		       <div class="col-lg-2 col-md-1 col-xs-6 thumb">
+		       <div class="col-lg-4 col-md-1 col-xs-6 thumb">
 			
-		         <div class="thumbnail">
+		         <div class="thumbnail-test">
 		           <%= link_to (image_tag restaurant.image_url(:thumb).to_s), restaurant_path(restaurant) %>		    
-		           <div class="caption">
-			         <em><%= restaurant.description %></em>
+		           <div class="caption-description">
+			         <br><em><%= restaurant.description %></em></br>
                    </div>
 			     </div>
                
@@ -54,8 +58,11 @@
         <% end %>
 
 
+
 <% if owner_signed_in? %>
+<div class="form-actions">
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_restaurant_path,
             :class => 'btn btn-primary' %>
+</div>
 <% end %>

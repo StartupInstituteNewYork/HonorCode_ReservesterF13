@@ -1,37 +1,48 @@
 <%- model_class = Restaurant -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.human_attribute_name(@restaurant.name).titleize %></h1>
-</div>
+<div class="container-fluid">
+	
 
-<div class="container-fluid">	
+	
 	<div class="row">
-	  <p><h4><%= @restaurant.description %></h4></p></br>
+	   <div class="restaurant-wrap">
+		  <div class="col-lg-4 col-md-2 col-xs-6 thumb">
+			<div class="thumbnail">
+				<div class="info-text">
+	               <h1><%=t '.title', :default => model_class.human_attribute_name(@restaurant.name).titleize %></h1>
+	              
+	            </div>
+		      </div>
+           </div>
+	   </div>
+          
+		    <div class="restaurant-wrap-show">	   			
+		       <div class="col-lg-2 col-md-1 col-xs-6 thumb">
+				<div class="thumbnail">
+				   <div class="title-caption">
+		             <h4><em><%= @restaurant.description %></em></h4>
+			       </div>
+                </div>
+		        <%= image_tag @restaurant.image_url(:masthead).to_s %>		    
 
-
-	  <dd><%= image_tag @restaurant.image_url(:masthead).to_s %></dd></br>
-
-	  <dt><strong><%= model_class.human_attribute_name(:address1) %>:</strong></dt>
-	  <dd><%= @restaurant.address1 %></dd></br>
-	  <dt><strong><%= model_class.human_attribute_name(:address2) %>:</strong></dt>
-	  <dd><%= @restaurant.address2 %></dd></br>
-	  <dt><strong><%= model_class.human_attribute_name(:city) %>:</strong></dt>
-	  <dd><%= @restaurant.city %></dd></br>
-	  <dt><strong><%= model_class.human_attribute_name(:state) %>:</strong></dt>
-	  <dd><%= @restaurant.state %></dd></br>
-	  <dt><strong><%= model_class.human_attribute_name(:zip) %>:</strong></dt>
-	  <dd><%= @restaurant.zip %></dd></br>
-	  
-	  <strong><%= model_class.human_attribute_name(:phone) %>:</strong>
-	  <dd><%= @restaurant.phone %></dd></br>
-
- 
-	  <% if @restaurant.owner %>
-	    <p><b>Proprietor:</b> <%= @restaurant.owner.name %></p></br>
-	  <% end %>
-
-
+			  
+               
+			     <div class="thumbnail">
+				   <div class="caption">
+		             <h3><%= @restaurant.name %></h3>		        
+			         <%= @restaurant.address1 %> <%= @restaurant.address2 %>
+		             <p><%= @restaurant.city %>, <%= @restaurant.state %> <%= @restaurant.zip %></p>
+		             <p><b>Proprietor:</b> <%= @restaurant.owner.name %></p>
+		           </div>		    		    	 	    
+		         </div>
+		      </div>
+            </div>
     </div>
+
+
+
 </div>
+
+
 
 
 <div class="form-actions">

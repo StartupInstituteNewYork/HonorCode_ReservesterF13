@@ -19,12 +19,46 @@
 
 }
 
+.restaurant-wrap-show {
+        float: left;
+        padding: 10px;
+        margin: 1% 2%;
+        img {
+                width: 500px;
+                #height: 200px;
+                border-radius: 1px;
+        }
+        #height: 300px;
+
+        border-radius: 12px;
+        box-shadow: 1px 1px 20px #8c8c8c;
+
+
+}
+
 .caption {
-	max-width: 270px;
+	max-width: 230px;
+}
+.title-caption {
+	max-width: 500px;
+	padding: 10px;
+}
+
+.info-text {
+	min-height: 200px;
+	min-width: 200px;
+	padding: 10px;
 }
 
 .thumb {
         margin-bottom: 30px;
+}
+.thumbnail-test {
+	min-height: 275px;
+	max-width: 230px;
+}
+.caption-description {
+	padding: 10px;
 }
 
 
